@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aldgonza <aldgonza@student.42.fr>          +#+  +:+       +#+         #
+#    By: aldgonza <aldgonza@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/13 17:28:12 by aldgonza          #+#    #+#              #
-#    Updated: 2023/04/17 17:43:40 by aldgonza         ###   ########.fr        #
+#    Updated: 2022/07/18 18:26:19 by aldgonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,23 +28,19 @@ CFLAGS	= -Wall -Wextra -Werror
 OBJS	= ${SRCS:%.c=%.o}
 
 %.o: %.c $(HEADER)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo Creating object: $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): ${HEADER} ${OBJS}
-		@ar rc $(NAME) $(OBJS)
-		@echo Compiling library: $(NAME)
+		ar rc $(NAME) $(OBJS)
 
-.PHONY: all clean fclean re
 
 all: $(NAME)
 
+
 clean:
-	@echo Deleting Objects $(OBJS)
-	@rm -f $(OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-	@echo Deleting Library $(NAME)
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all

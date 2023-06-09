@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldgonza <aldgonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 15:13:08 by aldgonza          #+#    #+#             */
-/*   Updated: 2022/07/20 15:00:34 by aldgonza         ###   ########.fr       */
+/*   Created: 2022/05/09 13:50:40 by aldgonza          #+#    #+#             */
+/*   Updated: 2022/07/07 15:09:06 by aldgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft_printf.h"
 
-int	ft_print_p(unsigned long long num)
+size_t	ft_strlen_print(const char *str)
+
 {
-	int		ret;
+	int	i;
 
-	ret = 0;
-	ret += ft_putstr_fd_print("0x", 1);
-	if (ret < 0)
-		return (-1);
-	if (num == 0)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		ret += ft_putstr_fd_print("0", 1);
-		if (ret < 0)
-			return (-1);
-		return (ret);
+		i++;
 	}
-	ret += ft_hex(num, 'a');
-	if (ret < 0)
-		return (-1);
-	return (ret);
+	return (i);
 }

@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldgonza <aldgonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 15:13:08 by aldgonza          #+#    #+#             */
-/*   Updated: 2022/07/20 15:00:34 by aldgonza         ###   ########.fr       */
+/*   Created: 2022/05/30 13:39:29 by aldgonza          #+#    #+#             */
+/*   Updated: 2022/07/18 17:10:29 by aldgonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft_printf.h"
 
-int	ft_print_p(unsigned long long num)
+int	ft_putchar_fd_print(int c, int fd)
 {
-	int		ret;
-
-	ret = 0;
-	ret += ft_putstr_fd_print("0x", 1);
-	if (ret < 0)
+	if ((write(fd, &c, 1)) != 1)
 		return (-1);
-	if (num == 0)
-	{
-		ret += ft_putstr_fd_print("0", 1);
-		if (ret < 0)
-			return (-1);
-		return (ret);
-	}
-	ret += ft_hex(num, 'a');
-	if (ret < 0)
-		return (-1);
-	return (ret);
+	return (1);
 }
